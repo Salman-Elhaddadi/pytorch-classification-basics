@@ -91,6 +91,6 @@ plt.ylabel("CrossEntropyLoss loss")
 plt.title("Iris - loss curves")
 plt.legend()
 plt.tight_layout()
-plt.savefig("images/04_Iris_loss.png", dpi=150)
+plt.savefig("images/03_iris_loss.png", dpi=150)
 plt.show()
 
