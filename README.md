@@ -11,9 +11,11 @@ These are learning exercises, not a model benchmark.
 | 01 | `01_moons_binary.py` | `make_moons` (noise=0.03) | 2 | `BCEWithLogitsLoss` | 100.00 % (200 test samples) |
 | 02 | `02_blobs_4_classes.py` | `make_blobs` (std=0.6) | 4 | `CrossEntropyLoss` | 100.00 % (200 test samples) |
 | 03 | `03_iris_3_classes.py` | Iris | 3 | `CrossEntropyLoss` | 100.00 % (30 test samples) |
-| 04 | `04_breast_cancer_binary.py` | Breast cancer (Wisconsin) | 2 | `BCEWithLogitsLoss` | 95.61 % (LogReg baseline: 98.25 %) |
+| 04 | `04_breast_cancer_binary.py` | Breast cancer (Wisconsin) | 2 | `BCEWithLogitsLoss` | 95.61 % (114 test samples; LogReg baseline: 98.25 %) |
 
 All models are small MLPs with two hidden layers, trained with Adam (lr=0.01, except lr=0.001 for the blobs script) on an 80/20 train/test split (`random_state=42`).
+
+Scripts 01-03 are saturated and mainly check that the training loop works. Script 04 is the only one where model choice matters, which is why it is the only one with a baseline.
 
 ## 01 - Moons (binary)
 
@@ -31,7 +33,7 @@ Dots are training points, triangles are test points. The four clusters are far a
 
 ![Iris loss curves](images/03_iris_loss.png)
 
-The loss starts near ln(3) ≈ 1.1 (random guessing over 3 classes) and flattens between epochs 60 and 100 with no sign of overfitting. The test set has only 30 samples, so one error moves the accuracy by 3.3 points.
+The loss starts near ln(3) ≈ 1.1 (random guessing over 3 classes) and flattens between epochs 60 and 100 with no sign of overfitting. The test set has only 30 samples, so one error moves the accuracy by 3.3 points. Train accuracy is 98.33 %, so 100 % on 30 samples cannot be separated from a lucky split.
 
 ## 04 - Breast cancer (binary)
 
@@ -71,5 +73,6 @@ Plots are saved in `images/`.
 ## Next
 
 CNNs and torchvision.
+
 
 
